@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Students List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+</head>
+
+<body>
+<div class="container">
+    <h1>Books List</h1>
+    <table class="table">
+        <thead>
+        <tr class="thead-dark">
+            <td>Id</td>
+            <td>Title</td>
+            <td>ShortDescription</td>
+            <td>Actions</td>
+            <td>Year</td>
+        </tr>
+        </thead>
+
+        <tr th:each="book : ${booksList}">
+            <td th:text="${book.id}"/>
+            <td th:text="${book.title}"/>
+            <td th:text="${book.shortDescription}"/>
+
+            <td>
+                <a class="btn btn-danger" th:href="@{'/library/remove/' + ${book.id}}" role="button">Remove</a>
+            </td>
+            <td th:text="${book.year}"/>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
